@@ -111,3 +111,10 @@ GitHub.
 3. Если все шаги прошли успешно, собранная продакшн версия файлов проекта
    отправляется в ветку `gh-pages`. В противном случае, в логе выполнения
    скрипта будет указано в чем проблема.
+
+
+   <!-- npm install redux -->
+   <!-- npm install react-redux -->
+   <!-- npm install @redux-devtools/extension -->
+   <!-- npm install @reduxjs/toolkit -->
+   <!-- npm install @reduxjs/toolkit react-redux -->
