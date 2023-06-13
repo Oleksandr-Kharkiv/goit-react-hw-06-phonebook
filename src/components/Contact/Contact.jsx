@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types';
+import { useDispatch} from 'react-redux';
+import { deleteContact } from 'redux/contactsSlice';
 import {
   ContactComponent,
   ContactTel,
@@ -6,24 +8,25 @@ import {
   ContactName,
 } from './Contacts.styled';
 
-export const Contact = ({ id, name, number, deleteContact }) => {
+
+export const Contact = ({ id, name, number}) => {
+  const dispatch = useDispatch();
+
   return (
     <ContactComponent key={id}>
       <ContactName>
         {name}: <ContactTel href="tel:({number})">{number}</ContactTel>
       </ContactName>
-      <DelContactBtn onClick={() => deleteContact(id)}>Delete</DelContactBtn>
+      <DelContactBtn onClick={() => dispatch(deleteContact(id))}>Delete</DelContactBtn>
     </ContactComponent>
   );
 };
 
 Contact.propTypes = {
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
-  deleteContact: PropTypes.func.isRequired,
-};
-
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+  };
 
 
 // ========================== варіант css-модулі ==================

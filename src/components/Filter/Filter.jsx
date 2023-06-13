@@ -1,10 +1,17 @@
-import PropTypes from 'prop-types';
-import { nanoid } from 'nanoid';
+import { nanoid } from '@reduxjs/toolkit';
+import { useDispatch } from 'react-redux';
+import { setFilter } from 'redux/filterSlice';
+import { getFilter } from '../../redux/selectors';
 import { FilterComponent, FilterLabel, FilterInput } from './Filter.styled';
 
 const filterInputId = nanoid();
 
-export const Filter = ({ onChange, filter }) => {
+export const Filter = () => {
+  const dispatch = useDispatch();
+
+  const changeFilter = e => {
+    dispatch(setFilter(e.target.value));
+  };
   return (
     <FilterComponent>
       <FilterLabel>Filter</FilterLabel>
@@ -12,8 +19,7 @@ export const Filter = ({ onChange, filter }) => {
         id={filterInputId}
         type="text"
         name="filter"
-        value={filter}
-        onChange={onChange}
+        onChange={changeFilter}
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         required
@@ -21,13 +27,6 @@ export const Filter = ({ onChange, filter }) => {
     </FilterComponent>
   );
 };
-
-Filter.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  filter: PropTypes.string.isRequired,
-};
-
-
 
 // ========================== варіант css-модулі ==================
 

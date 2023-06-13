@@ -1,8 +1,11 @@
-import PropTypes from 'prop-types';
-import { Contact } from '../Contact/Contact';
+// import PropTypes from 'prop-types';
+import { useSelector } from "react-redux";
+import { getContacts } from 'redux/selectors';
 import { ContactListComponent } from './ContactList.styled';
+import { Contact } from '../Contact/Contact';
 
-export const ContactList = ({ contacts, deleteContact }) => {
+export const ContactList = () => {
+  const contacts = useSelector(getContacts);
   return (
     <ContactListComponent>
       {contacts.map(contact => (
@@ -11,22 +14,10 @@ export const ContactList = ({ contacts, deleteContact }) => {
           id={contact.id}
           name={contact.name}
           number={contact.number}
-          deleteContact={deleteContact}
-        />
+          />
       ))}
     </ContactListComponent>
   );
-};
-
-ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.exact({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    })
-  ),
-  deleteContact: PropTypes.func.isRequired,
 };
 
 
