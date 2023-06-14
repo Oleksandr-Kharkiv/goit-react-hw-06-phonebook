@@ -1,4 +1,3 @@
-// import PropTypes from 'prop-types';
 import { useSelector } from "react-redux";
 import { getContacts } from 'redux/selectors';
 import { getFilter } from 'redux/selectors';
@@ -9,16 +8,15 @@ import { Contact } from '../Contact/Contact';
 export const ContactList = () => {
   const contacts = useSelector(getContacts);
 
-  // const stateFilter = useSelector(getFilter);
-
-  // const normalizedFilter = stateFilter.toLowerCase();
-
-  // const filtred = contacts.filter(contact =>
-  //     contact.name.toLowerCase().includes(normalizedFilter)
-  // );
+  const stateFilter = useSelector(getFilter);
+  const normalizedFilter = stateFilter.toLowerCase();
+  const filtred = contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+  );
+  
   return (
     <ContactListComponent>
-      {contacts.map(contact => (
+      {filtred.map(contact => (
         <Contact
           key={contact.id}
           id={contact.id}

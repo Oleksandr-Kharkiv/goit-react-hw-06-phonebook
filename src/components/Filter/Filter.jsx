@@ -10,7 +10,6 @@ export const Filter = () => {
   const changeFilter = e => {
     let newQuery = e.target.value.trim();
     dispatch(setNewFilter(newQuery));
-    console.log(newQuery);
   };
   
   return (
