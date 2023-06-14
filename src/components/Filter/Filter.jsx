@@ -1,17 +1,18 @@
 import { nanoid } from '@reduxjs/toolkit';
-import { useDispatch } from 'react-redux';
-import { setFilter } from 'redux/filterSlice';
-import { getFilter } from '../../redux/selectors';
+import { useDispatch} from 'react-redux';
+import { setNewFilter } from 'redux/filterSlice';
 import { FilterComponent, FilterLabel, FilterInput } from './Filter.styled';
-
-const filterInputId = nanoid();
 
 export const Filter = () => {
   const dispatch = useDispatch();
+  const filterInputId = nanoid();
 
   const changeFilter = e => {
-    dispatch(setFilter(e.target.value));
+    let newQuery = e.target.value.trim();
+    dispatch(setNewFilter(newQuery));
+    console.log(newQuery);
   };
+  
   return (
     <FilterComponent>
       <FilterLabel>Filter</FilterLabel>
