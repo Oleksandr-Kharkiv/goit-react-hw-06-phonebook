@@ -8,7 +8,7 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from 'redux-persist';
+} from 'redux-persist';  /* для збереження даних в local storage */
 import { filterReducer } from './filterSlice';
 import { contactsReducer } from './contactsSlice';
 import storage from 'redux-persist/lib/storage';

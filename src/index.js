@@ -8,7 +8,7 @@ import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Provider store={store }      /*для створення глобального State */>                                
+    <Provider store={store}      /*для створення глобального State */>                                
       <PersistGate loading={null} persistor={persistor}    /*для збереження даних в Local storage*/>      
         <App />
       </PersistGate>
